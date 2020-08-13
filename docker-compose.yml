@@ -1,0 +1,10 @@
+version: "3"
+services:
+  bot:
+    build: .
+    environment:
+      - DISCORD_TOKEN=${TOKEN}
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./:/app

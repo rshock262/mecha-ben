@@ -2,3 +2,4 @@ bot-env/*
 example-bot.py
 discord.log
 *~
+.env
