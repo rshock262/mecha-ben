@@ -1,7 +1,7 @@
+import os
 import discord
-import discord.ext
+from discord.ext import commands
 import openai
-import logging
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,7 +13,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 @bot.command()
-async def benChat(ctx)
+async def benChat(ctx):
     completion = openai.Completion.create(
             model="text-ada-001",
             max_tokens=5,
