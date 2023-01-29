@@ -32,7 +32,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 @bot.command()
-async def benChat(ctx):
+async def benchat(ctx):
     completion = openai.Completion.create(
             model="text-curie-001",
             max_tokens=80,
@@ -42,7 +42,7 @@ async def benChat(ctx):
 
 
 @bot.command()
-async def benDraw(ctx):
+async def bendraw(ctx):
     image = openai.Image.create(
             size="512x512",
             prompt=ctx.message.content
