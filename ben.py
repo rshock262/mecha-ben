@@ -15,32 +15,32 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.command()
 async def benChat(ctx):
     completion = openai.Completion.create(
-            model="text-ada-001",
-            max_tokens=5,
-            prompt=ctx.message
+            model="text-curie-001",
+            max_tokens=80,
+            prompt=ctx.message.content
             )
-    ctx.send(completion.choices[0].text)
+    await ctx.send(completion.choices[0].text)
 
 
 @bot.command()
 async def benDraw(ctx):
     image = openai.Image.create(
             size="512x512",
-            prompt=ctx.message
+            prompt=ctx.message.content
             )
-    ctx.send(image.data[0].url)
+    await ctx.send(image.data[0].url)
 
-@bot.command()
-async def benQuip(ctx):
-    completion = openai.Completion.create(
-            model="text-davinci-003",
-            max_tokens=60,
-            temperature=0.5,
-            top_p=0.3,
-            frequency_penalty=0.5,
-            presence_penalty=0.0,
-            prompt=ctx.message
-            )
-    ctx.send(completion.choices[0].text)
+# @bot.command()
+# async def benQuip(ctx):
+#     completion = openai.Completion.create(
+#             model="text-davinci-003",
+#             max_tokens=20,
+#             temperature=0.5,
+#             top_p=0.3,
+#             frequency_penalty=0.5,
+#             presence_penalty=0.0,
+#             prompt=ctx.message.content
+#             )
+#     await ctx.send(completion.choices[0].text)
 
 bot.run(os.environ.get("TOKEN"))
