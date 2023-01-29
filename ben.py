@@ -5,7 +5,6 @@ import openai
 from dotenv import load_dotenv
 import logging
 
-
 # Logging rec from the docs
 logger = logging.getLogger('discord')
 logger.setLevel(logging.INFO)
@@ -32,20 +31,20 @@ intents.message_content = True
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 @bot.command()
-async def benchat(ctx):
+async def benchat(ctx, *, arg):
     completion = openai.Completion.create(
             model="text-curie-001",
             max_tokens=80,
-            prompt=ctx.message.content
+            prompt=arg
             )
     await ctx.send(completion.choices[0].text)
 
 
 @bot.command()
-async def bendraw(ctx):
+async def bendraw(ctx, *, arg):
     image = openai.Image.create(
             size="512x512",
-            prompt=ctx.message.content
+            prompt=arg
             )
     await ctx.send(image.data[0].url)
 
