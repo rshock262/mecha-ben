@@ -4,6 +4,7 @@ from discord.ext import commands
 import openai
 from dotenv import load_dotenv
 import logging
+import json
 
 # Logging rec from the docs
 logger = logging.getLogger('discord')
@@ -30,7 +31,7 @@ intents.message_content = True
 #bot commands start with '!'
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-@bot.command()
+@bot.command(aliases=["c"])
 async def benchat(ctx, *, arg):
     completion = openai.Completion.create(
             model="text-curie-001",
@@ -40,13 +41,22 @@ async def benchat(ctx, *, arg):
     await ctx.send(completion.choices[0].text)
 
 
-@bot.command()
+@bot.command(aliases=["d"])
 async def bendraw(ctx, *, arg):
     image = openai.Image.create(
             size="512x512",
             prompt=arg
             )
     await ctx.send(image.data[0].url)
+
+@bot.command(aliases=["v"])
+async def benverify(ctx):
+    message = await ctx.channel.fetch_message(ctx.message.reference.message_id)
+    moderate = openai.Moderation.create(
+        input=message.content
+        )
+    await ctx.send("Flagged" if moderate.results[0].flagged else "Safe")
+    await ctx.send(json.dumps(moderate.results[0].category_scores, indent=2))
 
 # Discord bot token from dotenv
 logger.info('Starting bot')
