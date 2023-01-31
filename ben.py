@@ -55,8 +55,8 @@ async def benverify(ctx):
     moderate = openai.Moderation.create(
         input=message.content
         )
-    await ctx.send("Flagged" if moderate.results[0].flagged else "Safe")
-    await ctx.send(json.dumps(moderate.results[0].category_scores, indent=2))
+    await ctx.send("Toxic" if moderate.results[0].flagged else "Safe")
+    await ctx.send(json.dumps(moderate.results[0].categories, indent=2))
 
 # Discord bot token from dotenv
 logger.info('Starting bot')
