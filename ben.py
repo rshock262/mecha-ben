@@ -34,7 +34,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 @bot.command(aliases=["c"])
 async def benchat(ctx, *, arg):
     completion = openai.Completion.create(
-            model="text-curie-001",
+            model="text-davinci-003",
             max_tokens=160,
             prompt=arg
             )
