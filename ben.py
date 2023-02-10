@@ -56,7 +56,8 @@ async def benverify(ctx):
         input=message.content
         )
     await ctx.send("Toxic" if moderate.results[0].flagged else "Safe")
-    await ctx.send(json.dumps(moderate.results[0].categories, indent=2))
+    if moderate.results[0].flagged:
+        await ctx.send(json.dumps(moderate.results[0].categories, indent=2))
 
 # Discord bot token from dotenv
 logger.info('Starting bot')
