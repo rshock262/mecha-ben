@@ -35,7 +35,7 @@ bot = commands.Bot(command_prefix='!', intents=intents)
 async def benchat(ctx, *, arg):
     completion = openai.Completion.create(
             model="text-curie-001",
-            max_tokens=80,
+            max_tokens=160,
             prompt=arg
             )
     await ctx.send(completion.choices[0].text)
