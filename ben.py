@@ -31,11 +31,13 @@ intents.message_content = True
 #bot commands start with '!'
 bot = commands.Bot(command_prefix='!', intents=intents)
 
-@bot.command(aliases=["test"])
+@bot.command(aliases=["test"],
+             help="I say Pong")
 async def ping(ctx):
     await ctx.send("Pong")
 
-@bot.command(aliases=["c"])
+@bot.command(aliases=["c"],
+             help="I talk back to you when you say things")
 async def benchat(ctx, *, arg):
     completion = openai.Completion.create(
             model="text-davinci-003",
@@ -44,7 +46,8 @@ async def benchat(ctx, *, arg):
             )
     await ctx.send(completion.choices[0].text)
 
-@bot.command(aliases=["d"])
+@bot.command(aliases=["d"],
+             help="I draw you a nice picture")
 async def bendraw(ctx, *, arg):
     image = openai.Image.create(
             size="512x512",
@@ -52,7 +55,8 @@ async def bendraw(ctx, *, arg):
             )
     await ctx.send(image.data[0].url)
 
-@bot.command(aliases=["v"])
+@bot.command(aliases=["v"],
+             help="I check if what you reply to is based or cringe")
 async def benverify(ctx):
     message = await ctx.channel.fetch_message(ctx.message.reference.message_id)
     moderate = openai.Moderation.create(
@@ -62,7 +66,8 @@ async def benverify(ctx):
     if moderate.results[0].flagged:
         await ctx.send(json.dumps(moderate.results[0].categories, indent=2))
 
-@bot.command(aliases=["e"])
+@bot.command(aliases=["e"],
+             help="I do what you tell me to do to a message you reply to")
 async def benedit(ctx, *, arg):
     change = await ctx.channel.fetch_message(ctx.message.reference.message_id)
     edit = openai.Edit.create(
