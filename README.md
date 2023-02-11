@@ -3,7 +3,9 @@
 
 Following the docs: https://discordpy.readthedocs.io/en/latest/
 
-Install instructions: https://discordpy.readthedocs.io/en/latest/intro.html#installing
+```
+pip install discord openai python-dotenv
+```
 
 ## How to use
 
@@ -20,5 +22,5 @@ docker run -it discord_bot
 
 Run the bot using python:
 ```
-python3 bot.py
+python3 ben.py
 ```
