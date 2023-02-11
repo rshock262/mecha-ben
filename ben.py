@@ -44,7 +44,6 @@ async def benchat(ctx, *, arg):
             )
     await ctx.send(completion.choices[0].text)
 
-
 @bot.command(aliases=["d"])
 async def bendraw(ctx, *, arg):
     image = openai.Image.create(
@@ -62,6 +61,16 @@ async def benverify(ctx):
     await ctx.send("Toxic" if moderate.results[0].flagged else "Safe")
     if moderate.results[0].flagged:
         await ctx.send(json.dumps(moderate.results[0].categories, indent=2))
+
+@bot.command(aliases=["e"])
+async def benedit(ctx, *, arg):
+    change = await ctx.channel.fetch_message(ctx.message.reference.message_id)
+    edit = openai.Edit.create(
+        model="text-davinci-edit-001",
+        input=change.content,
+        instruction=arg
+        )
+    await ctx.send(edit.choices[0].text)
 
 # Discord bot token from dotenv
 logger.info('Starting bot')
