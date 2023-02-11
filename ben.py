@@ -31,6 +31,10 @@ intents.message_content = True
 #bot commands start with '!'
 bot = commands.Bot(command_prefix='!', intents=intents)
 
+@bot.command(aliases=["test"])
+async def ping(ctx):
+    await ctx.send("Pong")
+
 @bot.command(aliases=["c"])
 async def benchat(ctx, *, arg):
     completion = openai.Completion.create(
