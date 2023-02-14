@@ -51,6 +51,7 @@ async def benchat(ctx, *, arg):
 async def benstory(ctx, *, arg):
     completion = openai.Completion.create(
             model="text-davinci-003",
+            max_tokens=4000,
             prompt=arg
             )
     await ctx.send(completion.choices[0].text)
