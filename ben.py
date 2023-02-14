@@ -46,6 +46,15 @@ async def benchat(ctx, *, arg):
             )
     await ctx.send(completion.choices[0].text)
 
+@bot.command(aliases=["s"],
+             help="I talk with no limit")
+async def benstory(ctx, *, arg):
+    completion = openai.Completion.create(
+            model="text-davinci-003",
+            prompt=arg
+            )
+    await ctx.send(completion.choices[0].text)
+
 @bot.command(aliases=["d"],
              help="I draw you a nice picture")
 async def bendraw(ctx, *, arg):
