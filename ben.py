@@ -40,7 +40,11 @@ async def ping(ctx):
 @bot.command(aliases=["g"],
              help="Get the first search result")
 async def search(ctx, *, arg):
-    await ctx.send(ddg(arg)[0]["body"])
+    result = ddg(arg)[0]
+    # I think there's a more pythonic way to do this,
+    # but I also want it to not embed using the chevrons... TOO BAD!
+    output = result["title"] + "\n" + result["body"] + "\n<" + result["href"] + ">"
+    await ctx.send(output)
 
 @bot.command(aliases=["c"],
              help="I talk back to you when you say things")
