@@ -5,6 +5,7 @@ import openai
 from dotenv import load_dotenv
 import logging
 import json
+from duckduckgo_search import ddg
 
 # Logging rec from the docs
 logger = logging.getLogger('discord')
@@ -35,6 +36,11 @@ bot = commands.Bot(command_prefix='!', intents=intents)
              help="I say Pong")
 async def ping(ctx):
     await ctx.send("Pong")
+
+@bot.command(aliases=["g"],
+             help="Get the first search result")
+async def search(ctx, *, arg):
+    await ctx.send(ddg(arg)[0]["body"])
 
 @bot.command(aliases=["c"],
              help="I talk back to you when you say things")
