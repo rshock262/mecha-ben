@@ -51,16 +51,6 @@ async def search(ctx, *, arg):
 async def benchat(ctx, *, arg):
     completion = openai.Completion.create(
             model="text-davinci-003",
-            max_tokens=160,
-            prompt=arg
-            )
-    await ctx.send(completion.choices[0].text)
-
-@bot.command(aliases=["s"],
-             help="I talk with no limit")
-async def benstory(ctx, *, arg):
-    completion = openai.Completion.create(
-            model="text-davinci-003",
             max_tokens=4000,
             prompt=arg
             )
