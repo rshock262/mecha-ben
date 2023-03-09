@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 import logging
 import json
 from duckduckgo_search import ddg
+from PIL import Image
+import requests
+from io import BytesIO
 
 # Logging rec from the docs
 logger = logging.getLogger('discord')
@@ -64,6 +67,18 @@ async def bendraw(ctx, *, arg):
             prompt=arg
             )
     await ctx.send(image.data[0].url)
+
+@bot.command(aliases=["rd"],
+             help="I redraw an image")
+async def benredraw(ctx, *, arg):
+    imgUrl = await ctx.channel.fetch_message(ctx.message.reference.message_id)
+    image = Image.open(BytesIO(requests.get(imgUrl.content))) # this is getting the image file the wrong way. Needs a 'bytes like file'
+    edit = openai.Image.create_edit(
+            image=image,
+            size="512x512",
+            prompt=arg
+            )
+    await ctx.send(edit.data[0].url)
 
 @bot.command(aliases=["v"],
              help="I check if what you reply to is based or cringe")
