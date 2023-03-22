@@ -99,7 +99,7 @@ async def on_message(message):
     if bot.user.mentioned_in(message):
         # This seems like a bad way to remove mentions when there's
         # a util to do this... TOO BAD
-        msg = message.clean_content.replace("@Mecha-Ben")
+        msg = message.clean_content.replace("@Mecha-Ben","")
         await message.channel.send(eliza.respond(msg))
 
 # Discord bot token from dotenv
