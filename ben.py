@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import logging
 import json
 from duckduckgo_search import ddg
+import eliza
 
 # Logging rec from the docs
 logger = logging.getLogger('discord')
@@ -24,6 +25,9 @@ load_dotenv()
 
 # OpenAI key from dotenv
 openai.api_key=os.environ.get("OPENAI_KEY")
+
+eliza = eliza.Eliza()
+eliza.load('doctor.txt')
 
 # Intents are what all the bot is allowed to do via privileged gateway
 intents = discord.Intents.default()
@@ -86,6 +90,17 @@ async def benedit(ctx, *, arg):
         instruction=arg
         )
     await ctx.send(edit.choices[0].text)
+
+
+@bot.listen('on_message')
+async def on_message(message):
+    if message.author == bot.user:
+        return
+    if bot.user.mentioned_in(message):
+        # This seems like a bad way to remove mentions when there's
+        # a util to do this... TOO BAD
+        msg = message.clean_content.replace("@Mecha-Ben")
+        await message.channel.send(eliza.respond(msg))
 
 # Discord bot token from dotenv
 logger.info('Starting bot')
