@@ -3,3 +3,4 @@ example-bot.py
 discord.log
 *~
 .env
+__pycache__
