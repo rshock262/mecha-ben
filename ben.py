@@ -27,7 +27,7 @@ load_dotenv()
 openai.api_key=os.environ.get("OPENAI_KEY")
 
 eliza = eliza.Eliza()
-eliza.load('doctor.txt')
+eliza.load('chatterbox.txt')
 
 # Intents are what all the bot is allowed to do via privileged gateway
 intents = discord.Intents.default()
