@@ -33,7 +33,7 @@ synon: sad unhappy depressed
 synon: happy elated glad better
 synon: nice bussin hella sick dope nocap
 synon: cannot can't
-synon: fuck
+synon: fuck faggot asshole
 synon: shit crap dogshit bad awful abysmal
 synon: cocksmack bitch fucker faggot
 synon: everyone everybody nobody noone
@@ -41,7 +41,6 @@ synon: be am is are was
 key: xnone
   decomp: *
     reasmb: I'm not sure I understand you fully
-    reasmb: Please go on
     reasmb: Dude what?
     reasmb: Say what?
     reasmb: ?
@@ -124,7 +123,6 @@ key: are
     reasmb: Possibly they are (2) 
 key: your
   decomp: * your *
-    reasmb: Why are you concerned over my (2)?
     reasmb: What about your own (2)?
     reasmb: Are you worried about someone else's (2)?
     reasmb: Really, my (2)?
@@ -157,8 +155,6 @@ key: i
     reasmb: I'm sure it's not pleasant to be (3) 
     reasmb: Can you explain what made you (3)?
   decomp: * i am * @happy *
-    reasmb: How have I helped you to be (3)?
-    reasmb: Has your treatment made you (3)?
     reasmb: What makes you (3) just now?
     reasmb: Can you explan why you are suddenly (3)?
   decomp: * i was *
@@ -218,7 +214,6 @@ key: you
     reasmb: What makes you think I (2) you?
     reasmb: Really, I (2) you?
     reasmb: Do you wish to believe I (2) you?
-    reasmb: Suppose I did (2) you -- what would that mean?
     reasmb: Does someone else believe I (2) you?
   decomp: * you *
     reasmb: Oh, I (2)?
