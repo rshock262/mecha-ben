@@ -204,7 +204,7 @@ key: you
     reasmb: Does it please you to believe I am (2)?
     reasmb: Do you sometimes wish you were (2)?
     reasmb: Perhaps you would like to be (2) 
-  decomp: @fuck * you 
+  decomp: * @fuck you *
     reasmb: fuck you too
     reasmb: go fuck yourself
   decomp: * you * me *
@@ -216,9 +216,7 @@ key: you
     reasmb: Do you wish to believe I (2) you?
     reasmb: Does someone else believe I (2) you?
   decomp: * you *
-    reasmb: Oh, I (2)?
     reasmb: You're not really talking about me -- are you?
-    reasmb: What are your feelings now?
 key: yes
   decomp: *
     reasmb: You seem to be quite positive
