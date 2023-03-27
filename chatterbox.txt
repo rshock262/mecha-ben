@@ -70,7 +70,7 @@ key: maybe
   decomp: *
     reasmb: goto perhaps
 key: anime 50
-  decomp: * is my favorite @anime
+  decomp: * is my favorite anime
     reasmb: (1) is shit
   decomp: *
     reasmb: Please don't talk about anime
